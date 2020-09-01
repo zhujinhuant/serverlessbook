@@ -1,0 +1,224 @@
+DEBUG Test worker com.amazonaws.AmazonWebServiceClient - Internal logging successfully configured to commons logger: true
+DEBUG Test worker com.amazonaws.metrics.AwsSdkMetrics - Admin mbean registered under com.amazonaws.management:type=AwsSdkMetrics
+DEBUG Test worker com.amazonaws.internal.config.InternalConfig - Configuration override awssdk_config_override.json not found.
+DEBUG java-sdk-http-connection-reaper org.apache.http.impl.conn.PoolingHttpClientConnectionManager - Closing connections idle longer than 60000 MILLISECONDS
+DEBUG Test worker com.amazonaws.monitoring.CsmConfigurationProviderChain - Unable to load configuration from com.amazonaws.monitoring.EnvironmentVariableCsmConfigurationProvider@4c859a95: Unable to load Client Side Monitoring configurations from environment variables!
+DEBUG Test worker com.amazonaws.monitoring.CsmConfigurationProviderChain - Unable to load configuration from com.amazonaws.monitoring.SystemPropertyCsmConfigurationProvider@542acbe7: Unable to load Client Side Monitoring configurations from system properties variables!
+DEBUG Test worker com.amazonaws.monitoring.CsmConfigurationProviderChain - Unable to load configuration from com.amazonaws.monitoring.ProfileCsmConfigurationProvider@574544ea: The 'default' profile does not define all the required properties!
+DEBUG Test worker com.amazonaws.auth.AWSCredentialsProviderChain - Unable to load credentials from EnvironmentVariableCredentialsProvider: Unable to load AWS credentials from environment variables (AWS_ACCESS_KEY_ID (or AWS_ACCESS_KEY) and AWS_SECRET_KEY (or AWS_SECRET_ACCESS_KEY))
+DEBUG Test worker com.amazonaws.auth.AWSCredentialsProviderChain - Unable to load credentials from SystemPropertiesCredentialsProvider: Unable to load AWS credentials from Java system properties (aws.accessKeyId and aws.secretKey)
+DEBUG Test worker com.amazonaws.auth.AWSCredentialsProviderChain - Unable to load credentials from WebIdentityTokenCredentialsProvider: To use assume role profiles the aws-java-sdk-sts module must be on the class path.
+DEBUG Test worker com.amazonaws.auth.AWSCredentialsProviderChain - Loading credentials from com.amazonaws.auth.profile.ProfileCredentialsProvider@20234706
+DEBUG Test worker com.amazonaws.request - Sending Request: POST https://dynamodb.us-east-1.amazonaws.com / Headers: (amz-sdk-invocation-id: 19465ce3-f2e8-8b0d-221d-5f6a60000ee0, Content-Length: 115, Content-Type: application/x-amz-json-1.0, User-Agent: aws-sdk-java/1.11.812 Mac_OS_X/10.13.6 Java_HotSpot(TM)_64-Bit_Server_VM/25.60-b23 java/1.8.0_60 vendor/Oracle_Corporation com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper/1.11.812, X-Amz-Target: DynamoDB_20120810.GetItem, ) 
+DEBUG Test worker com.amazonaws.auth.AWS4Signer - AWS4 Canonical Request: '"POST
+/
+
+amz-sdk-invocation-id:19465ce3-f2e8-8b0d-221d-5f6a60000ee0
+amz-sdk-request:attempt=1;max=11
+amz-sdk-retry:0/0/500
+content-length:115
+content-type:application/x-amz-json-1.0
+host:dynamodb.us-east-1.amazonaws.com
+user-agent:aws-sdk-java/1.11.812 Mac_OS_X/10.13.6 Java_HotSpot(TM)_64-Bit_Server_VM/25.60-b23 java/1.8.0_60 vendor/Oracle_Corporation com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper/1.11.812
+x-amz-date:20200630T094006Z
+x-amz-target:DynamoDB_20120810.GetItem
+
+amz-sdk-invocation-id;amz-sdk-request;amz-sdk-retry;content-length;content-type;host;user-agent;x-amz-date;x-amz-target
+62e307c23663e470e3385c82fbffdb6a3b4e17456f538349ee494f8fd98d9d84"
+DEBUG Test worker com.amazonaws.auth.AWS4Signer - AWS4 String to Sign: '"AWS4-HMAC-SHA256
+20200630T094006Z
+20200630/us-east-1/dynamodb/aws4_request
+7c38c96fa42483f2e4bc926c9babb8dc92ce7050566c26db2f77f7d8c1d439ed"
+DEBUG Test worker com.amazonaws.auth.AWS4Signer - Generating a new signing key as the signing key not available in the cache for the date 1593475200000
+DEBUG Test worker org.apache.http.client.protocol.RequestAddCookies - CookieSpec selected: default
+DEBUG Test worker org.apache.http.client.protocol.RequestAuthCache - Auth cache not set in the context
+DEBUG Test worker org.apache.http.impl.conn.PoolingHttpClientConnectionManager - Connection request: [route: {s}->https://dynamodb.us-east-1.amazonaws.com:443][total kept alive: 0; route allocated: 0 of 50; total allocated: 0 of 50]
+DEBUG Test worker org.apache.http.impl.conn.PoolingHttpClientConnectionManager - Connection leased: [id: 0][route: {s}->https://dynamodb.us-east-1.amazonaws.com:443][total kept alive: 0; route allocated: 1 of 50; total allocated: 1 of 50]
+DEBUG Test worker org.apache.http.impl.execchain.MainClientExec - Opening connection {s}->https://dynamodb.us-east-1.amazonaws.com:443
+DEBUG Test worker org.apache.http.impl.conn.DefaultHttpClientConnectionOperator - Connecting to dynamodb.us-east-1.amazonaws.com/52.119.224.166:443
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - connecting to dynamodb.us-east-1.amazonaws.com/52.119.224.166:443
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - Connecting socket to dynamodb.us-east-1.amazonaws.com/52.119.224.166:443 with timeout 10000
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - Enabled protocols: [TLSv1, TLSv1.1, TLSv1.2]
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - Enabled cipher suites:[TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - socket.getSupportedProtocols(): [SSLv2Hello, SSLv3, TLSv1, TLSv1.1, TLSv1.2], socket.getEnabledProtocols(): [TLSv1, TLSv1.1, TLSv1.2]
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - TLS protocol enabled for SSL handshake: [TLSv1.2, TLSv1.1, TLSv1]
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - Starting handshake
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - Secure session established
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory -  negotiated protocol: TLSv1.2
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory -  negotiated cipher suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory -  peer principal: CN=dynamodb.us-east-1.amazonaws.com
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory -  peer alternative names: [dynamodb.us-east-1.amazonaws.com, *.ddb.us-east-1.amazonaws.com]
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory -  issuer principal: CN=Amazon, OU=Server CA 1B, O=Amazon, C=US
+DEBUG Test worker com.amazonaws.internal.SdkSSLSocket - created: dynamodb.us-east-1.amazonaws.com/52.119.224.166:443
+DEBUG Test worker org.apache.http.impl.conn.DefaultHttpClientConnectionOperator - Connection established 192.168.18.104:54507<->52.119.224.166:443
+DEBUG Test worker org.apache.http.impl.conn.DefaultManagedHttpClientConnection - http-outgoing-0: set socket timeout to 50000
+DEBUG Test worker org.apache.http.impl.execchain.MainClientExec - Executing request POST / HTTP/1.1
+DEBUG Test worker org.apache.http.impl.execchain.MainClientExec - Proxy auth state: UNCHALLENGED
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> POST / HTTP/1.1
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> Host: dynamodb.us-east-1.amazonaws.com
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> amz-sdk-invocation-id: 19465ce3-f2e8-8b0d-221d-5f6a60000ee0
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> amz-sdk-request: attempt=1;max=11
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> amz-sdk-retry: 0/0/500
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> Authorization: AWS4-HMAC-SHA256 Credential=AKIARHBM3XJYBMNCS3JD/20200630/us-east-1/dynamodb/aws4_request, SignedHeaders=amz-sdk-invocation-id;amz-sdk-request;amz-sdk-retry;content-length;content-type;host;user-agent;x-amz-date;x-amz-target, Signature=811ea224435ba305b6921c269fd9da7d380524b67d2fcc0b87b71aa72a93d3e3
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> Content-Type: application/x-amz-json-1.0
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> User-Agent: aws-sdk-java/1.11.812 Mac_OS_X/10.13.6 Java_HotSpot(TM)_64-Bit_Server_VM/25.60-b23 java/1.8.0_60 vendor/Oracle_Corporation com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper/1.11.812
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> X-Amz-Date: 20200630T094006Z
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> X-Amz-Target: DynamoDB_20120810.GetItem
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> Content-Length: 115
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> Connection: Keep-Alive
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "POST / HTTP/1.1[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "Host: dynamodb.us-east-1.amazonaws.com[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "amz-sdk-invocation-id: 19465ce3-f2e8-8b0d-221d-5f6a60000ee0[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "amz-sdk-request: attempt=1;max=11[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "amz-sdk-retry: 0/0/500[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "Authorization: AWS4-HMAC-SHA256 Credential=AKIARHBM3XJYBMNCS3JD/20200630/us-east-1/dynamodb/aws4_request, SignedHeaders=amz-sdk-invocation-id;amz-sdk-request;amz-sdk-retry;content-length;content-type;host;user-agent;x-amz-date;x-amz-target, Signature=811ea224435ba305b6921c269fd9da7d380524b67d2fcc0b87b71aa72a93d3e3[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "Content-Type: application/x-amz-json-1.0[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "User-Agent: aws-sdk-java/1.11.812 Mac_OS_X/10.13.6 Java_HotSpot(TM)_64-Bit_Server_VM/25.60-b23 java/1.8.0_60 vendor/Oracle_Corporation com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper/1.11.812[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "X-Amz-Date: 20200630T094006Z[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "X-Amz-Target: DynamoDB_20120810.GetItem[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "Content-Length: 115[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "{"TableName":"serverlessbook-TokenTable-FI3B7ENB761U","Key":{"Token":{"S":"INVALID_TOKEN"}},"ConsistentRead":false}"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "Server: Server[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "Date: Tue, 30 Jun 2020 09:40:10 GMT[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "Content-Type: application/x-amz-json-1.0[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "Content-Length: 2[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "x-amzn-RequestId: 0VUIAGG6PKATVD478GAA4SM1FRVV4KQNSO5AEMVJF66Q9ASUAAJG[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "x-amz-crc32: 2745614147[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "{}"
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << HTTP/1.1 200 OK
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << Server: Server
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << Date: Tue, 30 Jun 2020 09:40:10 GMT
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << Content-Type: application/x-amz-json-1.0
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << Content-Length: 2
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << Connection: keep-alive
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << x-amzn-RequestId: 0VUIAGG6PKATVD478GAA4SM1FRVV4KQNSO5AEMVJF66Q9ASUAAJG
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << x-amz-crc32: 2745614147
+DEBUG Test worker org.apache.http.impl.execchain.MainClientExec - Connection can be kept alive for 60000 MILLISECONDS
+DEBUG Test worker com.amazonaws.retry.ClockSkewAdjuster - Reported server date (from 'Date' header): Tue, 30 Jun 2020 09:40:10 GMT
+DEBUG Test worker org.apache.http.impl.conn.PoolingHttpClientConnectionManager - Connection [id: 0][route: {s}->https://dynamodb.us-east-1.amazonaws.com:443] can be kept alive for 60.0 seconds
+DEBUG Test worker org.apache.http.impl.conn.DefaultManagedHttpClientConnection - http-outgoing-0: set socket timeout to 0
+DEBUG Test worker org.apache.http.impl.conn.PoolingHttpClientConnectionManager - Connection released: [id: 0][route: {s}->https://dynamodb.us-east-1.amazonaws.com:443][total kept alive: 1; route allocated: 1 of 50; total allocated: 1 of 50]
+DEBUG Test worker com.amazonaws.request - Received successful response: 200, AWS Request ID: 0VUIAGG6PKATVD478GAA4SM1FRVV4KQNSO5AEMVJF66Q9ASUAAJG
+DEBUG Test worker com.amazonaws.requestId - x-amzn-RequestId: 0VUIAGG6PKATVD478GAA4SM1FRVV4KQNSO5AEMVJF66Q9ASUAAJG
+INFO Test worker com.serverlessbook.lambda.authorizer.Handler - User authentication failed for token INVALID_TOKEN
+INFO Test worker com.serverlessbook.lambda.authorizer.Handler - PolicyStatement Effect: Deny
+DEBUG Test worker com.amazonaws.monitoring.CsmConfigurationProviderChain - Unable to load configuration from com.amazonaws.monitoring.EnvironmentVariableCsmConfigurationProvider@4c859a95: Unable to load Client Side Monitoring configurations from environment variables!
+DEBUG Test worker com.amazonaws.monitoring.CsmConfigurationProviderChain - Unable to load configuration from com.amazonaws.monitoring.SystemPropertyCsmConfigurationProvider@542acbe7: Unable to load Client Side Monitoring configurations from system properties variables!
+DEBUG Test worker com.amazonaws.monitoring.CsmConfigurationProviderChain - Unable to load configuration from com.amazonaws.monitoring.ProfileCsmConfigurationProvider@574544ea: The 'default' profile does not define all the required properties!
+DEBUG Test worker com.amazonaws.AmazonWebServiceClient - Internal logging successfully configured to commons logger: true
+DEBUG Test worker com.amazonaws.metrics.AwsSdkMetrics - Admin mbean registered under com.amazonaws.management:type=AwsSdkMetrics
+DEBUG Test worker com.amazonaws.internal.config.InternalConfig - Configuration override awssdk_config_override.json not found.
+DEBUG java-sdk-http-connection-reaper org.apache.http.impl.conn.PoolingHttpClientConnectionManager - Closing connections idle longer than 60000 MILLISECONDS
+DEBUG Test worker com.amazonaws.monitoring.CsmConfigurationProviderChain - Unable to load configuration from com.amazonaws.monitoring.EnvironmentVariableCsmConfigurationProvider@791cf073: Unable to load Client Side Monitoring configurations from environment variables!
+DEBUG Test worker com.amazonaws.monitoring.CsmConfigurationProviderChain - Unable to load configuration from com.amazonaws.monitoring.SystemPropertyCsmConfigurationProvider@37bd0b44: Unable to load Client Side Monitoring configurations from system properties variables!
+DEBUG Test worker com.amazonaws.monitoring.CsmConfigurationProviderChain - Unable to load configuration from com.amazonaws.monitoring.ProfileCsmConfigurationProvider@6302de8a: The 'default' profile does not define all the required properties!
+DEBUG Test worker com.amazonaws.auth.AWSCredentialsProviderChain - Unable to load credentials from EnvironmentVariableCredentialsProvider: Unable to load AWS credentials from environment variables (AWS_ACCESS_KEY_ID (or AWS_ACCESS_KEY) and AWS_SECRET_KEY (or AWS_SECRET_ACCESS_KEY))
+DEBUG Test worker com.amazonaws.auth.AWSCredentialsProviderChain - Unable to load credentials from SystemPropertiesCredentialsProvider: Unable to load AWS credentials from Java system properties (aws.accessKeyId and aws.secretKey)
+DEBUG Test worker com.amazonaws.auth.AWSCredentialsProviderChain - Unable to load credentials from WebIdentityTokenCredentialsProvider: To use assume role profiles the aws-java-sdk-sts module must be on the class path.
+DEBUG Test worker com.amazonaws.auth.AWSCredentialsProviderChain - Loading credentials from com.amazonaws.auth.profile.ProfileCredentialsProvider@32c427df
+DEBUG Test worker com.amazonaws.request - Sending Request: POST https://dynamodb.us-east-1.amazonaws.com / Headers: (amz-sdk-invocation-id: d6266991-7b78-c558-ba85-82cf55470de7, Content-Length: 115, Content-Type: application/x-amz-json-1.0, User-Agent: aws-sdk-java/1.11.813 Mac_OS_X/10.13.6 Java_HotSpot(TM)_64-Bit_Server_VM/25.60-b23 java/1.8.0_60 vendor/Oracle_Corporation com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper/1.11.813, X-Amz-Target: DynamoDB_20120810.GetItem, ) 
+DEBUG Test worker com.amazonaws.auth.AWS4Signer - AWS4 Canonical Request: '"POST
+/
+
+amz-sdk-invocation-id:d6266991-7b78-c558-ba85-82cf55470de7
+amz-sdk-request:attempt=1;max=11
+amz-sdk-retry:0/0/500
+content-length:115
+content-type:application/x-amz-json-1.0
+host:dynamodb.us-east-1.amazonaws.com
+user-agent:aws-sdk-java/1.11.813 Mac_OS_X/10.13.6 Java_HotSpot(TM)_64-Bit_Server_VM/25.60-b23 java/1.8.0_60 vendor/Oracle_Corporation com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper/1.11.813
+x-amz-date:20200630T151749Z
+x-amz-target:DynamoDB_20120810.GetItem
+
+amz-sdk-invocation-id;amz-sdk-request;amz-sdk-retry;content-length;content-type;host;user-agent;x-amz-date;x-amz-target
+62e307c23663e470e3385c82fbffdb6a3b4e17456f538349ee494f8fd98d9d84"
+DEBUG Test worker com.amazonaws.auth.AWS4Signer - AWS4 String to Sign: '"AWS4-HMAC-SHA256
+20200630T151749Z
+20200630/us-east-1/dynamodb/aws4_request
+8a374dc070854d20cfe889333405cd44898e4d4559c7a8109eaafd57a3bb0cda"
+DEBUG Test worker com.amazonaws.auth.AWS4Signer - Generating a new signing key as the signing key not available in the cache for the date 1593475200000
+DEBUG Test worker org.apache.http.client.protocol.RequestAddCookies - CookieSpec selected: default
+DEBUG Test worker org.apache.http.client.protocol.RequestAuthCache - Auth cache not set in the context
+DEBUG Test worker org.apache.http.impl.conn.PoolingHttpClientConnectionManager - Connection request: [route: {s}->https://dynamodb.us-east-1.amazonaws.com:443][total kept alive: 0; route allocated: 0 of 50; total allocated: 0 of 50]
+DEBUG Test worker org.apache.http.impl.conn.PoolingHttpClientConnectionManager - Connection leased: [id: 0][route: {s}->https://dynamodb.us-east-1.amazonaws.com:443][total kept alive: 0; route allocated: 1 of 50; total allocated: 1 of 50]
+DEBUG Test worker org.apache.http.impl.execchain.MainClientExec - Opening connection {s}->https://dynamodb.us-east-1.amazonaws.com:443
+DEBUG Test worker org.apache.http.impl.conn.DefaultHttpClientConnectionOperator - Connecting to dynamodb.us-east-1.amazonaws.com/52.119.228.150:443
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - connecting to dynamodb.us-east-1.amazonaws.com/52.119.228.150:443
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - Connecting socket to dynamodb.us-east-1.amazonaws.com/52.119.228.150:443 with timeout 10000
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - Enabled protocols: [TLSv1, TLSv1.1, TLSv1.2]
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - Enabled cipher suites:[TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - socket.getSupportedProtocols(): [SSLv2Hello, SSLv3, TLSv1, TLSv1.1, TLSv1.2], socket.getEnabledProtocols(): [TLSv1, TLSv1.1, TLSv1.2]
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - TLS protocol enabled for SSL handshake: [TLSv1.2, TLSv1.1, TLSv1]
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - Starting handshake
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory - Secure session established
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory -  negotiated protocol: TLSv1.2
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory -  negotiated cipher suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory -  peer principal: CN=dynamodb.us-east-1.amazonaws.com
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory -  peer alternative names: [dynamodb.us-east-1.amazonaws.com, *.ddb.us-east-1.amazonaws.com]
+DEBUG Test worker com.amazonaws.http.conn.ssl.SdkTLSSocketFactory -  issuer principal: CN=Amazon, OU=Server CA 1B, O=Amazon, C=US
+DEBUG Test worker com.amazonaws.internal.SdkSSLSocket - created: dynamodb.us-east-1.amazonaws.com/52.119.228.150:443
+DEBUG Test worker org.apache.http.impl.conn.DefaultHttpClientConnectionOperator - Connection established 172.16.21.254:59560<->52.119.228.150:443
+DEBUG Test worker org.apache.http.impl.conn.DefaultManagedHttpClientConnection - http-outgoing-0: set socket timeout to 50000
+DEBUG Test worker org.apache.http.impl.execchain.MainClientExec - Executing request POST / HTTP/1.1
+DEBUG Test worker org.apache.http.impl.execchain.MainClientExec - Proxy auth state: UNCHALLENGED
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> POST / HTTP/1.1
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> Host: dynamodb.us-east-1.amazonaws.com
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> amz-sdk-invocation-id: d6266991-7b78-c558-ba85-82cf55470de7
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> amz-sdk-request: attempt=1;max=11
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> amz-sdk-retry: 0/0/500
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> Authorization: AWS4-HMAC-SHA256 Credential=AKIARHBM3XJYBMNCS3JD/20200630/us-east-1/dynamodb/aws4_request, SignedHeaders=amz-sdk-invocation-id;amz-sdk-request;amz-sdk-retry;content-length;content-type;host;user-agent;x-amz-date;x-amz-target, Signature=35ef07ca4f5b460f8728de8a43f2c29ed4da696158ac4fd6e534269ece35b8ca
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> Content-Type: application/x-amz-json-1.0
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> User-Agent: aws-sdk-java/1.11.813 Mac_OS_X/10.13.6 Java_HotSpot(TM)_64-Bit_Server_VM/25.60-b23 java/1.8.0_60 vendor/Oracle_Corporation com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper/1.11.813
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> X-Amz-Date: 20200630T151749Z
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> X-Amz-Target: DynamoDB_20120810.GetItem
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> Content-Length: 115
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 >> Connection: Keep-Alive
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "POST / HTTP/1.1[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "Host: dynamodb.us-east-1.amazonaws.com[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "amz-sdk-invocation-id: d6266991-7b78-c558-ba85-82cf55470de7[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "amz-sdk-request: attempt=1;max=11[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "amz-sdk-retry: 0/0/500[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "Authorization: AWS4-HMAC-SHA256 Credential=AKIARHBM3XJYBMNCS3JD/20200630/us-east-1/dynamodb/aws4_request, SignedHeaders=amz-sdk-invocation-id;amz-sdk-request;amz-sdk-retry;content-length;content-type;host;user-agent;x-amz-date;x-amz-target, Signature=35ef07ca4f5b460f8728de8a43f2c29ed4da696158ac4fd6e534269ece35b8ca[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "Content-Type: application/x-amz-json-1.0[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "User-Agent: aws-sdk-java/1.11.813 Mac_OS_X/10.13.6 Java_HotSpot(TM)_64-Bit_Server_VM/25.60-b23 java/1.8.0_60 vendor/Oracle_Corporation com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper/1.11.813[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "X-Amz-Date: 20200630T151749Z[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "X-Amz-Target: DynamoDB_20120810.GetItem[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "Content-Length: 115[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 >> "{"TableName":"serverlessbook-TokenTable-FI3B7ENB761U","Key":{"Token":{"S":"INVALID_TOKEN"}},"ConsistentRead":false}"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "Server: Server[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "Date: Tue, 30 Jun 2020 15:17:50 GMT[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "Content-Type: application/x-amz-json-1.0[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "Content-Length: 2[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "x-amzn-RequestId: VR3QPF18HIS5N1D7HGK5IQH6SVVV4KQNSO5AEMVJF66Q9ASUAAJG[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "x-amz-crc32: 2745614147[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "[\r][\n]"
+DEBUG Test worker org.apache.http.wire - http-outgoing-0 << "{}"
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << HTTP/1.1 200 OK
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << Server: Server
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << Date: Tue, 30 Jun 2020 15:17:50 GMT
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << Content-Type: application/x-amz-json-1.0
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << Content-Length: 2
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << Connection: keep-alive
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << x-amzn-RequestId: VR3QPF18HIS5N1D7HGK5IQH6SVVV4KQNSO5AEMVJF66Q9ASUAAJG
+DEBUG Test worker org.apache.http.headers - http-outgoing-0 << x-amz-crc32: 2745614147
+DEBUG Test worker org.apache.http.impl.execchain.MainClientExec - Connection can be kept alive for 60000 MILLISECONDS
+DEBUG Test worker com.amazonaws.retry.ClockSkewAdjuster - Reported server date (from 'Date' header): Tue, 30 Jun 2020 15:17:50 GMT
+DEBUG Test worker org.apache.http.impl.conn.PoolingHttpClientConnectionManager - Connection [id: 0][route: {s}->https://dynamodb.us-east-1.amazonaws.com:443] can be kept alive for 60.0 seconds
+DEBUG Test worker org.apache.http.impl.conn.DefaultManagedHttpClientConnection - http-outgoing-0: set socket timeout to 0
+DEBUG Test worker org.apache.http.impl.conn.PoolingHttpClientConnectionManager - Connection released: [id: 0][route: {s}->https://dynamodb.us-east-1.amazonaws.com:443][total kept alive: 1; route allocated: 1 of 50; total allocated: 1 of 50]
+DEBUG Test worker com.amazonaws.request - Received successful response: 200, AWS Request ID: VR3QPF18HIS5N1D7HGK5IQH6SVVV4KQNSO5AEMVJF66Q9ASUAAJG
+DEBUG Test worker com.amazonaws.requestId - x-amzn-RequestId: VR3QPF18HIS5N1D7HGK5IQH6SVVV4KQNSO5AEMVJF66Q9ASUAAJG
+INFO Test worker com.serverlessbook.lambda.authorizer.Handler - User authentication failed for token INVALID_TOKEN
+INFO Test worker com.serverlessbook.lambda.authorizer.Handler - PolicyStatement Effect: Deny
+DEBUG Test worker com.amazonaws.monitoring.CsmConfigurationProviderChain - Unable to load configuration from com.amazonaws.monitoring.EnvironmentVariableCsmConfigurationProvider@791cf073: Unable to load Client Side Monitoring configurations from environment variables!
+DEBUG Test worker com.amazonaws.monitoring.CsmConfigurationProviderChain - Unable to load configuration from com.amazonaws.monitoring.SystemPropertyCsmConfigurationProvider@37bd0b44: Unable to load Client Side Monitoring configurations from system properties variables!
+DEBUG Test worker com.amazonaws.monitoring.CsmConfigurationProviderChain - Unable to load configuration from com.amazonaws.monitoring.ProfileCsmConfigurationProvider@6302de8a: The 'default' profile does not define all the required properties!

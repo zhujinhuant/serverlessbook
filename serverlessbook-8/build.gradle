@@ -1,0 +1,143 @@
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.0'
+}
+
+// allprojects means this configuration
+// will be inherited by the root project itself and subprojects
+allprojects {
+    // Artifact Id of the projct
+    group 'com.serverlessbook'
+    // Version of the project
+    version '1.0'
+    // Gradle JAVA plugin needed for JAVA support
+    apply plugin: 'java'
+    // We will be using JAVA 8, then 1.8
+    sourceCompatibility = 1.8
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:1.2.3"
+        //classmethod公司的AWS插件，在构建脚本里调用AWS的API
+        classpath "jp.classmethod.aws:gradle-aws-plugin:0.37"
+    }
+}
+
+//制定插件应用于所有子项目。所有的子项目部署到us-east-2区
+allprojects {
+    apply plugin: "jp.classmethod.aws"
+    aws {
+        region = "us-east-1"
+    }
+}
+
+allprojects {
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
+
+}
+
+def bucketRegionName = "${aws.region}"
+//定义bucket的名词变量，aws要求所有的bucket名称唯一性
+def deploymentBucketName = "serverless-book-1-${aws.region}"
+//定义一个时间变量
+def deploymentTime = new java.text.SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+
+//创建一个bucket，如果存在就不创建
+//可以运行 ./gradlew createDeploymentBucket 测试下, 运行 aws s3 ls 查看创建的bucket
+allprojects {
+    apply plugin: "jp.classmethod.aws.s3"
+    task createDeploymentBucket(type: jp.classmethod.aws.gradle.s3.CreateBucketTask) {
+        bucketName deploymentBucketName
+        //region bucketRegionName //默认us-east-1 不需要指定
+        ifNotExists true
+    }
+}
+
+//lambda-开头的子项目，编译lambda工程
+configure(subprojects.findAll { it.name.startsWith("lambda-") }) {
+    dependencies {
+        compile project(':lambda')
+    }
+    //添加插件shadow，编译成fat-jar
+    apply plugin: "com.github.johnrengelman.shadow"
+    build.finalizedBy shadowJar
+
+    //获取 shadowJar 归档的路径
+    def producedJarFilePath = it.tasks.shadowJar.archivePath
+    //根据编译的时间命名jar，每次都是一个新jar，要拿过来抱着后续lambda调用的都是最新的jar
+    //it 代表闭包的参数,version在最上面已定义为1.0
+    def s3Key = "artifacts/${it.name}/${it.version}/${deploymentTime}.jar"
+
+    //上传jar到s3，有两个依赖，build ，createDeploymentBucket 两个task
+    //测试：./gradlew uploadArtifactsToS3
+    //查看：aws s3 ls s3://serverless-book-us-east-2/artifacts/lambda-test/1.0/
+    task uploadArtifactsToS3(type: jp.classmethod.aws.gradle.s3.AmazonS3FileUploadTask,
+            dependsOn: [build, createDeploymentBucket]) {
+        bucketName deploymentBucketName
+        file producedJarFilePath
+        key s3Key
+    }
+}
+
+// 添加cloudformation插件
+apply plugin: "jp.classmethod.aws.cloudformation"
+
+cloudFormation {
+    //创建IAM资源，由于我们需要创建IAM角色和IAM策略，所以同时必须创建IAM资源，否则cloudformation无法执行。
+    capabilityIam true
+    //cloudformation 模版文件的位置
+    templateFile project.file('cloudformation.template')
+    //上传模版文件的bucket名称使用定义的名称：deploymentBucketName = "serverless-book1-${aws.region}" 
+    templateBucket deploymentBucketName
+    //S3桶名称前缀，可以任意指定,
+    templateKeyPrefix "cfn-templates"
+    //cloudformation伐的名称
+    stackName "serverlessbook"
+    //gradle 和 cloudformation模版传参赋值，cloudformation的三个参数
+    conventionMapping.stackParams = {
+        return [
+                DeploymentBucket: deploymentBucketName,
+                ProjectVersion  : project.version,
+                DeploymentTime  : deploymentTime,
+                DomainName : "您的域名"
+        ]
+    }
+}
+
+//awsCfnMigrateStackAndWaitCompleted：创建或更新CloudFormation伐兵等待创建完成
+//awsCfnMigrateStack：同上唯一区别就是不等待操作完成。
+//awsCfnUploadTemplate：将本地cloudformation模版上传到S3云存储桶。
+awsCfnMigrateStack.dependsOn awsCfnUploadTemplate
+
+//构建和上传程序文件，部署cloudformation模版
+task deploy {
+    configure(subprojects.findAll { it.name.startsWith("lambda-") }) {
+        //依赖 uploadArtifactsToS3 任务（编译打包，创建bucket，上传程序到bucket）
+        dependsOn it.uploadArtifactsToS3
+    }
+    //部署的最后一个操作
+    finalizedBy awsCfnMigrateStackAndWaitCompleted
+}
+
+
+

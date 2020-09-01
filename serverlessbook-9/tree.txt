@@ -1,0 +1,37 @@
+简单授权工程
+├── lambda //Lambda基础类，解决公用代码和公用依赖
+│   ├── build.gradle	//共用依赖
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── lambda
+│                           └── LambdaHandler.java	//共用代码
+├── lambda-test
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── lambda
+│                           └── test
+│                               └── Handler.java 	//Lambad入口函数：输入直接输出
+├── lambda-authorizer
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── lambda
+│                           └── authorizer
+│                               ├── Handler.java 	//Lambda入口函数
+│                               └── models
+│                                   ├── AuthorizationInput.java
+│                                   ├── AuthorizationOutput.java	//授权输出信息即policy
+│                                   └── policy 		
+│                                       ├── PolicyStatement.java	//具体策略描述
+│                                       └── PolicyDocument.java		//与角色关联的信任策略
+├── cloudformation.template	//cloudformation 模版文件
+├── build.gradle 			//编译文件
+└── settings.gradle 		//需要编译的子项目 

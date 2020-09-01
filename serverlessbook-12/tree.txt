@@ -1,0 +1,130 @@
+.
+├── README.txt                                                                          //工程自述文件
+├── build.gradle                                                                        //文件包含项目构建所使用的脚本
+├── cloudformation.template                                                             //cloudformation 模版文件
+├── lambda
+│   ├── build.gradle                                                                    //文件包含项目构建所使用的脚本
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── lambda
+│                           └── LambdaHandler.java                                      //共用代码基础类，解决公用代码和公用依赖
+├── lambda-authorizer                                                                   //Lambda 授权工程
+│   ├── build.gradle                                                                    //文件包含项目构建所使用的脚本
+│   ├── firestorm.log
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── serverlessbook
+│       │   │           └── lambda
+│       │   │               └── authorizer
+│       │   │                   ├── DependencyInjectionModule.java                      //Guice依赖关系类
+│       │   │                   ├── Handler.java                                        //Lambad入口函数
+│       │   │                   └── models
+│       │   │                       ├── AuthorizationInput.java                         //授权输入toke信息
+│       │   │                       ├── AuthorizationOutput.java                        //授权输出信息即policy
+│       │   │                       └── policy
+│       │   │                           ├── PolicyDocument.java                         //具体策略描述
+│       │   │                           └── PolicyStatement.java                        //与角色关联的信任策略
+│       │   └── resources
+│       │       └── log4j.properties                                                    //log4j日志配置
+│       └── test
+│           ├── java
+│           │   └── com
+│           │       └── serverlessbook
+│           │           └── lambda
+│           │               └── authorizer
+│           │                   └── HandlerTest.java                                    //测试类
+│           └── resources
+│               └── log4j.properties                                                    //log4j日志配置
+├── lambda-imageresizer                                                                 //接受Bucket事件的Lambda工程
+│   ├── build.gradle                                                                    //文件包含项目构建所使用的脚本
+│   └── src
+│       └── main
+│           ├── java
+│           │   └── com
+│           │       └── serverlessbook
+│           │           └── lambda
+│           │               └── imageresize
+│           │                   └── Handler.java                                        //Lambad入口函数
+│           └── resources
+│               └── log4j.properties                                                    //log4j日志配置
+├── lambda-test                                                                         //Lambda HellowWorld工程
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── lambda
+│                           └── test
+│                               └── Handler.java                                        //Lambad入口函数
+├── lambda-userregistration
+│   ├── build.gradle                                                                    //文件包含项目构建所使用的脚本
+│   └── src
+│       └── main
+│           ├── java
+│           │   └── com
+│           │       └── serverlessbook
+│           │           └── lambda
+│           │               └── userregistration
+│           │                   ├── DependencyInjectionModule.java                      //Guice依赖关系类
+│           │                   └── Handler.java                                        //Lambad入口函数
+│           └── resources
+│               └── log4j.properties                                                    //log4j日志配置
+├── lambda-userregistration-welcomemail
+│   ├── build.gradle                                                                    //文件包含项目构建所使用的脚本
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── lambda
+│                           └── userregistration
+│                               └── welcomemail
+│                                   └── Handler.java                                    //Lambad入口函数
+├── repository-dynamodb                                                                 //dynamodb基础类工程
+│   ├── build.gradle                                                                    //文件包含项目构建所使用的脚本
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── repository
+│                           ├── DynamoDBMapperWithCustomTableName.java                  //自定义 DynamoDBMapper
+│                           └── EnvironmentVariableTableNameResolver.java               //表名解析器
+├── services-user                                                                       //用户业务工程
+│   ├── build.gradle                                                                    //文件包含项目构建所使用的脚本
+│   └── src
+│       ├── main
+│       │   └── java
+│       │       └── com
+│       │           └── serverlessbook
+│       │               └── services
+│       │                   └── user
+│       │                       ├── UserNotFoundException.java                          //异常类：用户不存在异常
+│       │                       ├── UserService.java                                    //业务层接口，根据toke获取用户信息
+│       │                       ├── UserServiceImpl.java                                //用户业务接口实现类
+│       │                       ├── domain
+│       │                       │   ├── Token.java                                      //用户Token，含有toke和userId
+│       │                       │   └── User.java                                       //用户model
+│       │                       ├── exception
+│       │                       │   ├── AnotherUserWithSameEmailExistsException.java    //异常类：相同邮箱
+│       │                       │   ├── AnotherUserWithSameUsernameExistsException.java //异常类：相同用户名
+│       │                       │   ├── InvalidMailAddressException.java                //异常类：Email格式非法
+│       │                       │   └── UserRegistrationException.java                  //异常类：用户注册异常基类
+│       │                       └── repository
+│       │                           ├── UserRepository.java                             //数据层接口，定义通过toke获取用户对象
+│       │                           └── UserRepositoryDynamoDB.java                     //UserRepository 实现类
+│       └── test
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── services
+│                           └── user
+│                               └── repository
+│                                   └── UserRepositoryDynamoDBTest.java                 //数据库测试类
+├── settings.gradle                                                                     //包含必要的设置,如:项目之间的依懒关系
+└── tree.txt

@@ -1,0 +1,42 @@
+.
+├── README.txt
+├── build.gradle
+├── cloudformation.template                                           //cloudformation 模版文件
+├── lambda
+│   ├── build.gradle
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── lambda
+│                           └── LambdaHandler.java                    //共用代码基础类，解决公用代码和公用依赖
+├── lambda-authorizer                                                 //Lambda 授权工程
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── lambda
+│                           └── authorizer
+│                               ├── Handler.java                      //Lambad入口函数
+│                               └── models
+│                                   ├── AuthorizationInput.java       //授权输入toke信息
+│                                   ├── AuthorizationOutput.java      //授权输出信息即policy
+│                                   └── policy
+│                                       ├── PolicyDocument.java       //具体策略描述
+│                                       └── PolicyStatement.java      //与角色关联的信任策略
+├── lambda-test                                                       //Lambda HellowWorld工程
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── lambda
+│                           └── test
+│                               └── Handler.java                      //Lambad入口函数
+├── settings.gradle
+├── tree.txt
+└── tree2.txt
+                                                                      //
+25 directories, 14 files

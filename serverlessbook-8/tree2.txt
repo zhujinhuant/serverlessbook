@@ -1,0 +1,42 @@
+.
+├── README.txt
+├── build.gradle
+├── cloudformation.template
+├── lambda
+│   ├── build.gradle
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── lambda
+│                           └── LambdaHandler.java
+├── lambda-authorizer
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── lambda
+│                           └── authorizer
+│                               ├── Handler.java
+│                               └── models
+│                                   ├── AuthorizationInput.java
+│                                   ├── AuthorizationOutput.java
+│                                   └── policy
+│                                       ├── PolicyDocument.java
+│                                       └── PolicyStatement.java
+├── lambda-test
+│   └── src
+│       └── main
+│           └── java
+│               └── com
+│                   └── serverlessbook
+│                       └── lambda
+│                           └── test
+│                               └── Handler.java
+├── settings.gradle
+├── tree.txt
+└── tree2.txt
+
+25 directories, 14 files
